@@ -1,0 +1,11 @@
+.tt-logo {
+  height: 100px;
+  width: 200px;
+}
+
+@media only screen and (max-width: 430px) {
+  .tt-logo-container {
+    display: flex;
+    justify-content: center;
+  }
+}

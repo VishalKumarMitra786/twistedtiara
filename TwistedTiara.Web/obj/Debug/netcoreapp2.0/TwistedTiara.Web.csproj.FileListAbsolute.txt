@@ -1,0 +1,12 @@
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\bin\Debug\netcoreapp2.0\TwistedTiara.Web.deps.json
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\bin\Debug\netcoreapp2.0\TwistedTiara.Web.runtimeconfig.json
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\bin\Debug\netcoreapp2.0\TwistedTiara.Web.runtimeconfig.dev.json
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\bin\Debug\netcoreapp2.0\TwistedTiara.Web.dll
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\bin\Debug\netcoreapp2.0\TwistedTiara.Web.pdb
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\obj\Debug\netcoreapp2.0\TwistedTiara.Web.csproj.CoreCompileInputs.cache
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\obj\Debug\netcoreapp2.0\TwistedTiara.Web.AssemblyInfoInputs.cache
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\obj\Debug\netcoreapp2.0\TwistedTiara.Web.AssemblyInfo.cs
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\obj\Debug\netcoreapp2.0\TwistedTiara.Web.dll
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\obj\Debug\netcoreapp2.0\TwistedTiara.Web.pdb
+E:\Projects\TwistedTiara\Source\TwistedTiara-Dopetrope\TwistedTiara\TwistedTiara.Web\obj\Debug\netcoreapp2.0\TwistedTiara.Web.csprojResolveAssemblyReference.cache

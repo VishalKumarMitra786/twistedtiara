@@ -1,0 +1,27 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+    @{
+        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        <form asp-action="/Account/ExternalLogin"
+              asp-route-returnurl="@ViewData["ReturnUrl"]"
+              method="post"
+              class="form-horizontal">
+            <div class="col-6-medium">
+                <p>
+                    @foreach (var provider in loginProviders)
+                    {
+                        <button type="submit" 
+                                class="btn btn-default" 
+                                name="provider" 
+                                value="@provider.Name" 
+                                title="Log in using your @provider.DisplayName account">@provider.Name</button>
+                    }
+                </p>
+            </div>
+        </form>
+    }
+</div>

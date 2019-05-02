@@ -22,4 +22,10 @@
     <Folder Include="AngularApp\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Account\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

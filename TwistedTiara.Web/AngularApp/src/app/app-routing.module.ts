@@ -9,17 +9,13 @@ const routes: Routes = [
     component: SectionsComponent
   },
   {
-    path: 'signin',
-    component: AuthComponent
-  },
-  {
     path: '',
-    redirectTo: '/signin',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: '/signin',
+    redirectTo: '/home',
     pathMatch: 'full'
   }
 ];

@@ -13,6 +13,8 @@ using Microsoft.Extensions.Options;
 using TwistedTiara.Web.Models;
 using TwistedTiara.Web.Models.AccountViewModels;
 using TwistedTiara.Web.Services;
+using TwistedTiara.Web.Models.Globals;
+using TwistedTiara.Web.Models.GoogleModels;
 
 namespace TwistedTiara.Web.Controllers
 {
@@ -24,23 +26,20 @@ namespace TwistedTiara.Web.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly IOptions<GoogleAuthenticationSettings> _googleSettings;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IOptions<GoogleAuthenticationSettings> googleSettings)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
-        }
-
-        [HttpGet("display")]
-        public async Task<IActionResult> Display()
-        {
-            return Ok("Hello World");
+            _googleSettings = googleSettings;
         }
 
         [TempData]
@@ -280,6 +279,28 @@ namespace TwistedTiara.Web.Controllers
             if (info == null)
             {
                 return RedirectToAction(nameof(Login));
+            }
+
+            var emailInfo = info.Principal.Claims.FirstOrDefault(
+                x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value;
+
+            var user = await _userManager.FindByEmailAsync(emailInfo);
+            if (user == null)
+            {
+                user = new ApplicationUser { UserName = emailInfo, Email = emailInfo };
+                var userCreationResult = await _userManager.CreateAsync(user);
+                if (userCreationResult.Succeeded)
+                {
+                    userCreationResult = await _userManager
+                        .AddLoginAsync(user, info);
+                    var roleToAssign =
+                    _googleSettings.Value.SuperAdminEmailId.ToLower() == emailInfo.ToLower()
+                    ? Constants.superAdmin : Constants.member;
+                    userCreationResult = await _userManager
+                        .AddToRoleAsync(user, roleToAssign);
+                    _logger.LogInformation("User created a new account with password.");
+                }
+                AddErrors(userCreationResult);
             }
 
             // Sign in the user with this external login provider if the user already has a login.

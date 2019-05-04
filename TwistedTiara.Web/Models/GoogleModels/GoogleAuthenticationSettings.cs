@@ -7,6 +7,7 @@ namespace TwistedTiara.Web.Models.GoogleModels
 {
     public class GoogleAuthenticationSettings
     {
+        public string SuperAdminEmailId { get; set; }
         public string ClientId { get; set; }
         public string ClientSecretKey { get; set; }
     }

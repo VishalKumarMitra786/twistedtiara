@@ -12,7 +12,7 @@ using TwistedTiara.Web.Data;
 using TwistedTiara.Web.Models;
 using TwistedTiara.Web.Services;
 using TwistedTiara.Web.Models.GoogleModels;
-
+using TwistedTiara.Web.Models.Globals;
 namespace TwistedTiara.Web
 {
     public class Startup
@@ -79,7 +79,38 @@ namespace TwistedTiara.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "spa-fallback",
+                    template: "{*url}",
+                    defaults: new { controller = "Home", action = "Index" });
             });
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetService<ApplicationDbContext>();
+                db.Database.Migrate();
+                // Create roles
+                CreateRoles(scope.ServiceProvider).Wait();
+            }
+        }
+
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            //initializing custom roles 
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            string[] roleNames = Constants.Roles;
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    //create the roles and seed them to the database
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
         }
     }
 }

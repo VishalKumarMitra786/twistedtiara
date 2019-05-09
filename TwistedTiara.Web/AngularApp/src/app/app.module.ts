@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,6 +18,7 @@ import {
 } from "angular-6-social-login";
 import { getAuthServiceConfigs } from './auth/auth-config';
 import { AppService } from './services/app.service';
+import { AdminModule } from './admin/admin.module';
 
 // Configs 
 
@@ -31,11 +33,13 @@ import { AppService } from './services/app.service';
     AuthComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     SlideshowModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AdminModule
   ],
   providers: [
     {

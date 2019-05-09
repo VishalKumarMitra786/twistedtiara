@@ -23,9 +23,19 @@
     <meta property="og:description" content="A start up to increase knowldege and awarness among the womens about their rights across the country" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="~/dist/styles.css" rel="stylesheet" />
 </head>
 <body class="homepage is-preload">
+    <h1>
+        @{
+
+            ApplicationUser currentUser = Model;
+            //Or
+            //Customer customer =ViewData.Model;
+            @currentUser.Email
+        }
+    </h1>
     <tt-root></tt-root>
     <!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
     <script type="text/javascript" src="~/dist/runtime.js"></script>

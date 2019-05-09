@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from 'src/app/auth/auth.component';
 import { SectionsComponent } from 'src/app/sections/sections.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -9,13 +9,17 @@ const routes: Routes = [
     component: SectionsComponent
   },
   {
+    path: 'admin',
+    component: AdminComponent
+  },
+  {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/admin',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: '/home',
+    redirectTo: '/admin',
     pathMatch: 'full'
   }
 ];

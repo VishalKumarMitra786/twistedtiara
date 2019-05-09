@@ -5,11 +5,15 @@
     <UserSecretsId>aspnet-TwistedTiara.Web-B56C687C-E205-4343-A86F-CB7D361F3265</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="AngularApp\src\app\admin\admin.routing.module.ts" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AngularApp\" />
+    <TypeScriptCompile Include="AngularApp\src\app\admin\admin.routing.module.ts" />
   </ItemGroup>
 
   <ItemGroup>

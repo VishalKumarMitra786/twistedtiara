@@ -13,6 +13,9 @@ using TwistedTiara.Web.Models;
 using TwistedTiara.Web.Services;
 using TwistedTiara.Web.Models.GoogleModels;
 using TwistedTiara.Web.Models.Globals;
+using AutoMapper;
+using TwistedTiara.Web.Models.PostModels;
+
 namespace TwistedTiara.Web
 {
     public class Startup
@@ -46,6 +49,13 @@ namespace TwistedTiara.Web
                 google.ClientId = googleSettingsClientId;
                 google.ClientSecret = googleSettingsClientSecretKey;
             });
+
+            var configuration = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ApplicationUser, ApplicationUserAc>().ReverseMap();
+                cfg.CreateMap<Post, PostAc>().ReverseMap();
+            });
+            configuration.CreateMapper();
             services.AddCors();
             services.AddMvc();
         }
@@ -79,6 +89,9 @@ namespace TwistedTiara.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "post",
+                //    template: "api/{controller=Post}/{*path}");
                 routes.MapRoute(
                     name: "spa-fallback",
                     template: "{*url}",

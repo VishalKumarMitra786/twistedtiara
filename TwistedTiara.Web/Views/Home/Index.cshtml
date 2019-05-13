@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿@{
+    ApplicationUser user = Model;
+}
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -27,17 +30,17 @@
     <link href="~/dist/styles.css" rel="stylesheet" />
 </head>
 <body class="homepage is-preload">
-    <h1>
-        @{
-
-            ApplicationUser currentUser = Model;
-            //Or
-            //Customer customer =ViewData.Model;
-            @currentUser.Email
-        }
-    </h1>
     <tt-root></tt-root>
     <!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+    <script>
+        var currentUser = {
+            userName: '@user.UserName',
+            email: '@user.Email',
+            phoneNumber: '@user.PhoneNumber'
+        }
+       console.log("hello");
+       console.log(currentUser);
+    </script>
     <script type="text/javascript" src="~/dist/runtime.js"></script>
     <script type="text/javascript" src="~/dist/es2015-polyfills.js" nomodule></script>
     <script type="text/javascript" src="~/dist/polyfills.js"></script>

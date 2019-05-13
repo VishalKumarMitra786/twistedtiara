@@ -1,25 +1,25 @@
 import * as tslib_1 from "tslib";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthComponent } from 'src/app/auth/auth.component';
 import { SectionsComponent } from 'src/app/sections/sections.component';
+import { AdminComponent } from './admin/admin.component';
 var routes = [
     {
         path: 'home',
         component: SectionsComponent
     },
     {
-        path: 'signin',
-        component: AuthComponent
+        path: 'admin',
+        component: AdminComponent
     },
     {
         path: '',
-        redirectTo: '/signin',
+        redirectTo: '/admin',
         pathMatch: 'full'
     },
     {
         path: '**',
-        redirectTo: '/signin',
+        redirectTo: '/admin',
         pathMatch: 'full'
     }
 ];
